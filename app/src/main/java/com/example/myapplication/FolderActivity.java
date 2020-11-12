@@ -41,7 +41,7 @@ public class FolderActivity extends Activity implements OnItemClickListener,OnCl
     baseFile=GetFilesUtils.getInstance().getBasePath(); 
 
 
-//    titleTv=(TextView) findViewById(R.id.mtitle);
+//    titleTv=(TextView) findViewById(R.id.mtitle);    11
 //    titleTv.setText("本地文件");
     verifyStoragePermissions(this);
     folderLv=(ListView) findViewById(R.id.folder_list); 
