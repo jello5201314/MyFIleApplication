@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CalendarListview</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="sans_serif" translatable="false">sans-serif</string>
+</resources>

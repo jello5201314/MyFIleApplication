@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_item"
+    android:layout_width="match_parent"
+    android:layout_height="66dp"
+    android:background="#ffffff"
+    android:paddingLeft="12dp">
+
+    <ImageView
+        android:id="@+id/folder_img"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_centerVertical="true"
+        android:scaleType="centerCrop" />
+
+    <RelativeLayout
+        android:id="@+id/ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/folder_img">
+
+        <TextView
+            android:id="@+id/folder_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="middle"
+            android:paddingRight="30dp"
+            android:singleLine="true"
+            android:textColor="#666666"
+            android:textSize="12sp"
+            tools:text="我是邮件的标题我是邮件的标题我是邮件的标题我是邮件的标题我是邮件的标题" />
+
+        <TextView
+            android:id="@+id/folder_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/folder_name"
+            android:layout_marginRight="10dp"
+            android:textColor="#666666"
+            android:textSize="12sp"
+            tools:text="12M" />
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
