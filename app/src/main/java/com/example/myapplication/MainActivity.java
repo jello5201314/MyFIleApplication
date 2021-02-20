@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerControl
             @Override
             public void onClick(View view) {
 
-                if ("1111".equals(getTitle())) {
+                if ("2222".equals(getTitle())) {
                     setIcon = true;
                 } else {
                     setIcon = false;
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerControl
         foldernowTv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ("1111".equals(getTitle())) {
+                if ("2222".equals(getTitle())) {
                     setIcon = true;
                 } else {
                     setIcon = false;
