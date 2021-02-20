@@ -8,24 +8,29 @@ import java.util.List;
 import java.util.Map; 
  
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.ComponentName;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View; 
 import android.view.View.OnClickListener; 
 import android.widget.AdapterView; 
-import android.widget.AdapterView.OnItemClickListener; 
-import android.widget.ListView; 
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.SimpleAdapter; 
 import android.widget.TextView; 
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
+import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
+
 public class FolderActivity extends Activity implements OnItemClickListener,OnClickListener { 
  
   private ListView folderLv; 
   private TextView foldernowTv; 
-  private SimpleAdapter sAdapter; 
+  private SimpleAdapter sAdapter;
   private List<Map<String, Object>> aList; 
   private String baseFile;
   private static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -33,20 +38,25 @@ public class FolderActivity extends Activity implements OnItemClickListener,OnCl
   private static String[] PERMISSIONS_STORAGE = {
           "android.permission.READ_EXTERNAL_STORAGE",
           "android.permission.WRITE_EXTERNAL_STORAGE" };
+  private ActivityManager activityManager;
+  private PackageManager packageManager;
+  private boolean setIcon = true;
+
   @Override 
   protected void onCreate(Bundle savedInstanceState) { 
     // TODO Auto-generated method stub 
     super.onCreate(savedInstanceState); 
     setContentView(R.layout.mypage_folder); 
-    baseFile=GetFilesUtils.getInstance().getBasePath(); 
-
+    baseFile=GetFilesUtils.getInstance().getBasePath();
+    activityManager = (ActivityManager) this.getSystemService(Activity.ACTIVITY_SERVICE);
+    packageManager = getPackageManager();
 
 //    titleTv=(TextView) findViewById(R.id.mtitle);    123
 //    titleTv.setText("本地文件");
     verifyStoragePermissions(this);
     folderLv=(ListView) findViewById(R.id.folder_list); 
     foldernowTv=(TextView) findViewById(R.id.folder_now); 
-    foldernowTv.setText(baseFile); 
+    foldernowTv.setText(baseFile);
     foldernowTv.setOnClickListener(this); 
     aList=new ArrayList<Map<String,Object>>(); 
     sAdapter=new SimpleAdapter(this, aList,R.layout.item_yun_file, new String[]{"fImg","fName","fInfo"},
@@ -58,7 +68,7 @@ public class FolderActivity extends Activity implements OnItemClickListener,OnCl
     } catch (IOException e) { 
       // TODO Auto-generated catch block 
       e.printStackTrace(); 
-    } 
+    }
   }
 
   //然后通过一个函数来申请
@@ -127,18 +137,33 @@ public class FolderActivity extends Activity implements OnItemClickListener,OnCl
   @Override 
   public void onClick(View v) { 
     // TODO Auto-generated method stub 
-    if(v.getId()==R.id.folder_now){ 
-      try { 
-        String folder=GetFilesUtils.getInstance().getParentPath(foldernowTv.getText().toString()); 
-        if(folder==null){ 
-          Toast.makeText(this, "无父目录，待处理", Toast.LENGTH_SHORT).show(); 
-        }else{ 
-          loadFolderList(folder); 
-        } 
-      } catch (IOException e) { 
-        // TODO Auto-generated catch block 
-        e.printStackTrace(); 
-      } 
+    if(v.getId()==R.id.folder_now){
+
+      if ("1111".equals(getTitle())) {
+        setIcon = false;
+      } else {
+        setIcon = true;
+      }
+
+      packageManager.setComponentEnabledSetting(new ComponentName(this, "com.example.modifyappdemo.MainActivity"),
+              setIcon == true ? COMPONENT_ENABLED_STATE_DISABLED : PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+              PackageManager.DONT_KILL_APP);
+
+      packageManager.setComponentEnabledSetting(new ComponentName(this, "com.example.modifyappdemo.changeAfter"),
+              setIcon == true ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED : COMPONENT_ENABLED_STATE_DISABLED,
+              PackageManager.DONT_KILL_APP);
+//
+//      try {
+//        String folder=GetFilesUtils.getInstance().getParentPath(foldernowTv.getText().toString());
+//        if(folder==null){
+//          Toast.makeText(this, "无父目录，待处理", Toast.LENGTH_SHORT).show();
+//        }else{
+//          loadFolderList(folder);
+//        }
+//      } catch (IOException e) {
+//        // TODO Auto-generated catch block
+//        e.printStackTrace();
+//      }
     } 
   } 
    
