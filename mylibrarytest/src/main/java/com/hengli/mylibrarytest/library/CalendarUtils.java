@@ -21,13 +21,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  ***********************************************************************************/
-package com.example.myapplication.library;
+package com.hengli.mylibrarytest.library;
 
-public interface DatePickerController {
-	public abstract int getMaxYear();
+import java.util.Calendar;
 
-	public abstract void onDayOfMonthSelected(int year, int month, int day);
 
-    public abstract void onDateRangeSelected(final SimpleMonthAdapter.SelectedDays<SimpleMonthAdapter.CalendarDay> selectedDays);
-
+public class CalendarUtils
+{
+	public static int getDaysInMonth(int month, int year) {
+        switch (month) {
+            case Calendar.JANUARY:
+            case Calendar.MARCH:
+            case Calendar.MAY:
+            case Calendar.JULY:
+            case Calendar.AUGUST:
+            case Calendar.OCTOBER:
+            case Calendar.DECEMBER:
+                return 31;
+            case Calendar.APRIL:
+            case Calendar.JUNE:
+            case Calendar.SEPTEMBER:
+            case Calendar.NOVEMBER:
+                return 30;
+            case Calendar.FEBRUARY:
+                return ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) ? 29 : 28;
+            default:
+                throw new IllegalArgumentException("Invalid Month");
+        }
+	}
 }

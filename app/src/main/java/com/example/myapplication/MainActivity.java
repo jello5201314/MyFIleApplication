@@ -1,15 +1,14 @@
 package com.example.myapplication;
 
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.myapplication.library.DatePickerController;
-import com.example.myapplication.library.DayPickerView;
-import com.example.myapplication.library.SimpleMonthAdapter;
+import com.hengli.mylibrarytest.library.DatePickerController;
+import com.hengli.mylibrarytest.library.DayPickerView;
+import com.hengli.mylibrarytest.library.SimpleMonthAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,8 +20,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerControl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        dayPickerView = (DayPickerView) findViewById(R.id.pickerView);
+        dayPickerView = (DayPickerView)findViewById(R.id.pickerViews);
         dayPickerView.init(this);
         dayPickerView.setController(this);
     }

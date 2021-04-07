@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  ***********************************************************************************/
-package com.example.myapplication.library;
+package com.hengli.mylibrarytest.library;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -37,7 +37,8 @@ import android.text.format.Time;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.example.myapplication.R;
+
+import com.hengli.mylibrarytest.R;
 
 import java.security.InvalidParameterException;
 import java.text.DateFormatSymbols;

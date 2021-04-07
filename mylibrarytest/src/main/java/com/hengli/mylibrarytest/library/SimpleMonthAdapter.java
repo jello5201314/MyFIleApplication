@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  ***********************************************************************************/
-package com.example.myapplication.library;
+package com.hengli.mylibrarytest.library;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -30,7 +30,8 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AbsListView;
 
-import com.example.myapplication.R;
+
+import com.hengli.mylibrarytest.R;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -38,6 +39,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 import androidx.recyclerview.widget.RecyclerView;
+
 
 public class SimpleMonthAdapter extends RecyclerView.Adapter<SimpleMonthAdapter.ViewHolder> implements SimpleMonthView.OnDayClickListener {
     protected static final int MONTHS_IN_YEAR = 12;

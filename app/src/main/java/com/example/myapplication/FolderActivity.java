@@ -19,6 +19,8 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView; 
 import android.widget.Toast;
 
+import com.hengli.mylibrarytest.GetFilesUtils;
+
 import androidx.core.app.ActivityCompat;
 
 public class FolderActivity extends Activity implements OnItemClickListener,OnClickListener { 
@@ -38,7 +40,7 @@ public class FolderActivity extends Activity implements OnItemClickListener,OnCl
     // TODO Auto-generated method stub 
     super.onCreate(savedInstanceState); 
     setContentView(R.layout.mypage_folder); 
-    baseFile=GetFilesUtils.getInstance().getBasePath(); 
+    baseFile= GetFilesUtils.getInstance().getBasePath();
 
 
 //    titleTv=(TextView) findViewById(R.id.mtitle);    12334567
